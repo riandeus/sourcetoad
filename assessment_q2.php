@@ -125,6 +125,12 @@ $guests  = [
     ],
 ];
 
+/**
+ * @param array $data - passed by reference so that the original $data will be modified by this function.
+ * @param array $keys - array of keys which we are sorting by. Should be keys contained within $data. Keys that are not in $data will be ignored.
+ * @param array $dir - array of directions (asc, desc) we are sorting the keys by. Value can be 'asc' or 'desc'.
+ * @return array - returns sorted array, although the original $data will also be modified/sorted.
+ */
 function multi_key_sort(&$data = [], $keys = [], $dir = []) {
     if (empty($data) or empty($keys)) {
         return $data;
@@ -155,6 +161,13 @@ function multi_key_sort(&$data = [], $keys = [], $dir = []) {
     call_user_func_array("array_multisort", $sort_args); //sends an array of sort args to array_multisort(). This allows any number of keys to sort by.
     return $data;
 }
+
+/**
+ * @param array $data
+ * @param string $key - key we are searching for within $data, including nested keys.
+ * @param array $result - the array of collected key values; should be one per $data entry. This is how we are able to sort using array_multisort.
+ * @return array
+ */
 function get_nested_column($data = [], $key = "", $result = []) {
     //echo "starting new fxn:\n";
 

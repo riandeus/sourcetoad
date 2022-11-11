@@ -34,6 +34,13 @@
  *
  */
 
+/**
+ * Class base - to save time I created generic setters/getters for specific properties,
+ * although it will only set the value of a property if it exists in the class in the first place.
+ * There is also the option for it to throw an exception if an invalid value is sent into
+ * get/set (although I don't use it for this example).
+ * All other classes inherit from this class.
+ */
 class base {
     protected $debug_mode = "silent_fail"; //silent_fail vs throw_error
 
