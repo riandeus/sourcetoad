@@ -163,26 +163,33 @@ function print_data($data, $field = "", $line_prefix = "", $indent_count = 0, $k
 }
 
 //print_r($guests);
-if(!isset($_GET['test'])) {
-    $_GET['test'] = "";
-}
-switch($_GET['test']) {
-    case "all":
-        print_data($guests, "all", "-", 0);
-        break;
-    case "first_name":
-        print_data($guests, "first_name", "-", 0);
-        break;
-    case "guest_booking":
-        print_data($guests, "guest_booking", "-", 0);
-        break;
-    case "room_no":
-        print_data($guests, "room_no", "-", 0);
-        break;
-    case "":
-        echo "no test parameter sent in.";
-        break;
-    default:
-        echo "unanticipated test parameter sent in.";
-        break;
+$tests = ["first_name", "guest_booking", "room_no", "", "all"];
+
+foreach($tests as $test) {
+    if($test == "all") {
+        echo "TEST: print out all fields per entry:<br>\n";
+    } else {
+        echo "TEST: print out field '$test' only (and subnested fields) in each entry: <br>\n";
+    }
+    switch ($test) {
+        case "all":
+            print_data($guests, "all", "-", 0);
+            break;
+        case "first_name":
+            print_data($guests, "first_name", "-", 0);
+            break;
+        case "guest_booking":
+            print_data($guests, "guest_booking", "-", 0);
+            break;
+        case "room_no":
+            print_data($guests, "room_no", "-", 0);
+            break;
+        case "":
+            echo "no test parameter sent in.";
+            break;
+        default:
+            echo "unanticipated test parameter sent in.";
+            break;
+    }
+    echo "<br>\n-------------------<br><br>\n\n";
 }

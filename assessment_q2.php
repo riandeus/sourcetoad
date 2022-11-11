@@ -176,4 +176,5 @@ function get_nested_column($data = [], $key = "", $result = []) {
     return $result;
 }
 $sorted = multi_key_sort($guests, ["gender","abc","booking_number"], ["asc","asc","desc"]);
+echo "TEST: sort by gender ASC, bad index 'abc' (should be ignored) ASC, then (nested) booking_number desc:<br>\n";
 print_r($sorted);
